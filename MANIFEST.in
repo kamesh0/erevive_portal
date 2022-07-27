@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include erevive_portal *.css
+recursive-include erevive_portal *.csv
+recursive-include erevive_portal *.html
+recursive-include erevive_portal *.ico
+recursive-include erevive_portal *.js
+recursive-include erevive_portal *.json
+recursive-include erevive_portal *.md
+recursive-include erevive_portal *.png
+recursive-include erevive_portal *.py
+recursive-include erevive_portal *.svg
+recursive-include erevive_portal *.txt
+recursive-exclude erevive_portal *.pyc
