@@ -1,0 +1,246 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:organization_name",
+ "creation": "2022-07-29 11:04:10.827523",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company_details_section",
+  "disabled",
+  "organization_name",
+  "address_1",
+  "address_2",
+  "city",
+  "column_break_5",
+  "state",
+  "pincode",
+  "country",
+  "gst_no",
+  "contact_details_section",
+  "primary_contact_person",
+  "primary_contact_no",
+  "email_id",
+  "column_break_14",
+  "alternate_contact_person",
+  "alternate_contact_no",
+  "alternate_email_id",
+  "banking_details_section",
+  "bank_name",
+  "bank_account_no",
+  "ifsc",
+  "column_break_22",
+  "branch_name",
+  "swift_code",
+  "account_type",
+  "documents_tab",
+  "document_gst",
+  "column_break_30",
+  "document_pan"
+ ],
+ "fields": [
+  {
+   "fieldname": "company_details_section",
+   "fieldtype": "Tab Break",
+   "label": "Company Details"
+  },
+  {
+   "default": "1",
+   "description": "Uncheck if you want to approve partner",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "organization_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Organization Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "address_1",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Address 1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address_2",
+   "fieldtype": "Data",
+   "label": "Address 2"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Link",
+   "label": "State",
+   "options": "State",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Pincode",
+   "reqd": 1
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "gst_no",
+   "fieldtype": "Data",
+   "label": "GST No"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "contact_details_section",
+   "fieldtype": "Tab Break",
+   "label": "Contact Details"
+  },
+  {
+   "fieldname": "primary_contact_person",
+   "fieldtype": "Data",
+   "label": "Primary Contact Person",
+   "reqd": 1
+  },
+  {
+   "fieldname": "primary_contact_no",
+   "fieldtype": "Data",
+   "label": "Primary Contact No",
+   "options": "Phone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email Id ",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "alternate_contact_person",
+   "fieldtype": "Data",
+   "label": "Alternate Contact Person"
+  },
+  {
+   "fieldname": "alternate_contact_no",
+   "fieldtype": "Data",
+   "label": "Alternate Contact No",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "alternate_email_id",
+   "fieldtype": "Data",
+   "label": "Alternate Email Id",
+   "options": "Email"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "banking_details_section",
+   "fieldtype": "Tab Break",
+   "label": "Banking Details"
+  },
+  {
+   "fieldname": "bank_name",
+   "fieldtype": "Data",
+   "label": "Bank Name"
+  },
+  {
+   "fieldname": "bank_account_no",
+   "fieldtype": "Data",
+   "label": "Bank Account No"
+  },
+  {
+   "fieldname": "ifsc",
+   "fieldtype": "Data",
+   "label": "IFSC"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch_name",
+   "fieldtype": "Data",
+   "label": "Branch Name"
+  },
+  {
+   "fieldname": "swift_code",
+   "fieldtype": "Data",
+   "label": "Swift Code"
+  },
+  {
+   "fieldname": "account_type",
+   "fieldtype": "Select",
+   "label": "Account Type",
+   "options": "\nCurrent Account\nSavings Account"
+  },
+  {
+   "fieldname": "documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "document_gst",
+   "fieldtype": "Attach",
+   "label": "Attach GST Certificate"
+  },
+  {
+   "fieldname": "column_break_30",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "document_pan",
+   "fieldtype": "Attach",
+   "label": "Attach PAN Card"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-08-08 10:29:53.319781",
+ "modified_by": "Administrator",
+ "module": "eRevive Partner Portal",
+ "name": "Partner",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

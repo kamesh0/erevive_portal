@@ -1,0 +1,128 @@
+{
+ "allow_comments": 0,
+ "allow_delete": 1,
+ "allow_edit": 0,
+ "allow_incomplete": 0,
+ "allow_multiple": 1,
+ "allow_print": 0,
+ "apply_document_permissions": 1,
+ "button_label": "Save",
+ "client_script": "frappe.web_form.set_value(\"partner\", frappe.session.user)",
+ "creation": "2022-08-01 19:35:10.600675",
+ "doc_type": "Partner Resource",
+ "docstatus": 0,
+ "doctype": "Web Form",
+ "idx": 0,
+ "is_multi_step_form": 0,
+ "is_standard": 1,
+ "list_columns": [
+  {
+   "fieldname": "resource_name",
+   "fieldtype": "Data",
+   "label": "Resource Name"
+  },
+  {
+   "fieldname": "profile",
+   "fieldtype": "Data",
+   "label": "Role"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email Id"
+  }
+ ],
+ "list_title": "List of Resources",
+ "login_required": 1,
+ "max_attachment_size": 0,
+ "modified": "2022-08-07 09:49:09.252322",
+ "modified_by": "Administrator",
+ "module": "eRevive Partner Portal",
+ "name": "parter-resource",
+ "owner": "Administrator",
+ "published": 0,
+ "route": "partner-resource",
+ "route_to_success_link": 0,
+ "show_attachments": 0,
+ "show_list": 1,
+ "show_sidebar": 1,
+ "title": "Partner Resource",
+ "web_form_fields": [
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "resource_name",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "Resource Name",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "profile",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "Role",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "contact_no",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "Contact No",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "Email Id",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "default": "",
+   "fieldname": "partner",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Partner",
+   "max_length": 0,
+   "max_value": 0,
+   "options": "Partner",
+   "read_only": 0,
+   "reqd": 1,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "hidden": 0,
+   "label": "User",
+   "max_length": 0,
+   "max_value": 0,
+   "options": "User",
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  }
+ ],
+ "website_sidebar": "eRevive Partner Portal"
+}
