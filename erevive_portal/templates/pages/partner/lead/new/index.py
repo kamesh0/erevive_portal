@@ -20,7 +20,7 @@ def get_context(context):
     context.doc = doc
 
 @frappe.whitelist()
-def update_partner_profile(payload=None):
+def create_new_lead(payload=None):
     payload = frappe._dict(json.loads(payload))
 
     partner = frappe.db.get_value(
@@ -33,19 +33,18 @@ def update_partner_profile(payload=None):
     if frappe.session.user != 'Administrator' and (not partner or frappe.session.user == "Guest") :
         raise frappe.PermissionError
 
-    doc = frappe.get_doc("Partner", partner.name)
+    doc = frappe.new_doc("Partner Lead")
 
+    doc.company_name = payload.company_name
     doc.address_1 = payload.address_1
     doc.address_2 = payload.address_2
     doc.city = payload.city
     doc.state = payload.state
-    doc.pincode = payload.pincode
-    doc.country = payload.country
-    doc.primary_contact_person = payload.primary_contact_person
-    doc.primary_contact_no = payload.primary_contact_no
-    doc.alternate_contact_person = payload.alternate_contact_person
-    doc.alternate_contact_no = payload.alternate_contact_no
-    doc.alternate_email_id = payload.alternate_email_id
+    doc.contact_person = payload.contact_person
+    doc.email_id = payload.email_id
+    doc.contact_no = payload.contact_no
+    doc.partner = partner.name
+    doc.status = "Open"
 
     doc.save(ignore_permissions=True)
 

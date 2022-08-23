@@ -18,6 +18,7 @@
   "column_break_9",
   "contact_person",
   "email_id",
+  "contact_no",
   "section_break_9",
   "partner",
   "partner_resource",
@@ -34,7 +35,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Company Name"
+   "label": "Company Name",
+   "reqd": 1
   },
   {
    "fieldname": "address_1",
@@ -75,7 +77,8 @@
   {
    "fieldname": "contact_person",
    "fieldtype": "Data",
-   "label": "Contact Person"
+   "label": "Contact Person",
+   "reqd": 1
   },
   {
    "fieldname": "email_id",
@@ -92,7 +95,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Partner",
-   "options": "Partner"
+   "options": "Partner",
+   "reqd": 1
   },
   {
    "fieldname": "partner_resource",
@@ -111,11 +115,17 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Open\nAssigned\nNurture\nDropped\nWon"
+  },
+  {
+   "fieldname": "contact_no",
+   "fieldtype": "Data",
+   "label": "contact_no",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-31 20:16:21.467502",
+ "modified": "2022-08-22 13:01:31.438076",
  "modified_by": "Administrator",
  "module": "eRevive Partner Portal",
  "name": "Partner Lead",

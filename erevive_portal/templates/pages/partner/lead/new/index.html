@@ -1,0 +1,89 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col m-2">
+            <h5>New Lead</h5>
+        </div>
+    </div>
+    <div class="row border-bottom mb-3">
+        <div class="col-md-6">
+            <div class="page-card-body">
+
+                <div class="form-group">
+                    <label class="form-label sr-only" for="company_name">Company Name</label>
+                    <input type="text" id="company_name" class="form-control" placeholder="Company Name" required="" autofocus=""
+                        autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label sr-only" for="address_1">Address1</label>
+                    <input type="text" id="address_1" class="form-control" placeholder="Address Line 1" required="" autofocus=""
+                        autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label sr-only" for="address_2">Address2</label>
+                    <input type="text" id="address_2" class="form-control" placeholder="Address Line 2" required="">
+                </div>
+                <div class="form-group">
+                    <label class="form-label sr-only" for="city">City</label>
+                    <input type="text" id="city" class="form-control" placeholder="City" required="">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="page-card-body">
+                <div class="form-group">
+                    <label class="form-label sr-only" for="state">State Name</label>
+                    <input type="text" id="state" class="form-control" placeholder="State Name" required="" autofocus=""
+                        autocomplete="state" >
+                </div>
+                <div class="form-group">
+                    <label class="form-label sr-only" for="pincode">Pincode</label>
+                    <input type="text" id="pincode" class="form-control" placeholder="Pin Code" required="">
+                </div>
+                <div class="form-group">
+                    <label class="form-label sr-only" for="country">Country</label>
+                    <input type="text" id="country" class="form-control" placeholder="Country" required="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="page-card-body">
+                <div class="form-group">
+                    <label class="form-label sr-only" for="contact_person">Contact Person</label>
+                    <input type="text" id="contact_person" class="form-control" placeholder="Contact Person" required="" autofocus=""
+                        autocomplete="state" >
+                </div>
+                <div class="form-group">
+                    <label class="form-label sr-only" for="contact_no">Contact No</label>
+                    <input type="text" id="contact_no" class="form-control" placeholder="Contact No" required="">
+                </div>
+                <div class="form-group">
+                    <label class="form-label sr-only" for="email_id">Email</label>
+                    <input type="text" id="email_id" class="form-control" placeholder="Email" required="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="page-card-actions">
+                <button class="btn btn-sm btn-primary btn-block btn-send">Save</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
