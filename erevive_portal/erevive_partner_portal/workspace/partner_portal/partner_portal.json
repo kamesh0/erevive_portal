@@ -1,0 +1,97 @@
+{
+ "charts": [],
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Partner Portal</span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Partner Request\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Active Partners\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Open Leads\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Partner Resource\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"spacer\",\"data\":{\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Partner Portal\",\"col\":4}}]",
+ "creation": "2022-07-31 10:08:45.137673",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "share-people",
+ "idx": 0,
+ "label": "Partner Portal",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Partner Portal",
+   "link_count": 3,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Partner",
+   "link_count": 0,
+   "link_to": "Partner",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Partner Resource",
+   "link_count": 0,
+   "link_to": "Partner Resource",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Partner Lead",
+   "link_count": 0,
+   "link_to": "Partner Lead",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2022-09-02 09:40:01.637976",
+ "modified_by": "Administrator",
+ "module": "eRevive Partner Portal",
+ "name": "Partner Portal",
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 30.0,
+ "shortcuts": [
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "label": "Open Leads",
+   "link_to": "Partner Lead",
+   "stats_filter": "{\"status\":[\"=\",\"Open\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "New Partner Request",
+   "link_to": "Partner",
+   "stats_filter": "{\"disabled\":[\"=\",1]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Partner Resource",
+   "link_to": "Partner Resource",
+   "stats_filter": "{\"name\":[\"is\",\"not set\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Active Partners",
+   "link_to": "Partner",
+   "stats_filter": "{\"disabled\":[\"=\",0]}",
+   "type": "DocType"
+  }
+ ],
+ "title": "Partner Portal"
+}

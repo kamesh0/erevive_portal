@@ -1,10 +1,20 @@
 {% extends "templates/web.html" %}
 
+{%- block head_include %}
+
+<link rel="stylesheet" href="/assets/erevive_portal/sky/vendors/feather/feather.css">
+<link rel="stylesheet" href="/assets/erevive_portal/sky/vendors/ti-icons/css/themify-icons.css">
+<link rel="stylesheet" href="/assets/erevive_portal/sky/vendors/css/vendor.bundle.base.css">
+
+<link rel="stylesheet" href="/assets/erevive_portal/sky/css/vertical-layout-light/style.css">
+
+{% endblock -%}
+
 {% block page_content %}
 
-<div class="container">
+<div class="content-wrapper rounded">
     <div class="row">
-        <div class="col text-right">
+        <div class="col pb-3 text-right">
             {% if doc.disable == 1 %}
                 Account Status : <span class="badge badge-danger">Pending for Approval</span>
             {% else %}
@@ -12,100 +22,152 @@
             {% endif %}
         </div>
     </div>
-    <div class="row">
-        <div class="col m-2">
-            <h5>Update Profile</h5>
-        </div>
-    </div>
-    <div class="row border-bottom mb-3">
-        <div class="col-md-6">
-            <div class="page-card-body">
-
-                <div class="form-group">
-                    <label class="form-label sr-only" for="address_1">Address1</label>
-                    <input type="text" id="address_1" class="form-control" placeholder="Address Line 1" required="" autofocus=""
-                        autocomplete="name" value="{{doc.address_1 or ''}}">
-                </div>
-                <div class="form-group">
-                    <label class="form-label sr-only" for="address_2">Address2</label>
-                    <input type="text" id="address_2" class="form-control" placeholder="Address Line 2" required="" value="{{doc.address_2 or ''}}">
-                </div>
-                <div class="form-group">
-                    <label class="form-label sr-only" for="city">City</label>
-                    <input type="text" id="city" class="form-control" placeholder="City" required="" value="{{doc.city or ''}}">
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="page-card-body">
-                <div class="form-group">
-                    <label class="form-label sr-only" for="state">State Name</label>
-                    <input type="text" id="state" class="form-control" placeholder="State Name" required="" autofocus=""
-                        autocomplete="state" value="{{doc.state or ''}}">
-                </div>
-                <div class="form-group">
-                    <label class="form-label sr-only" for="pincode">Pincode</label>
-                    <input type="text" id="pincode" class="form-control" placeholder="Pin Code" required="" value="{{doc.pincode or ''}}">
-                </div>
-                <div class="form-group">
-                    <label class="form-label sr-only" for="country">Country</label>
-                    <input type="text" id="country" class="form-control" placeholder="Country" required="" value="{{doc.country or ''}}">
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="page-card-body">
-                <div class="form-group">
-                    <label class="form-label sr-only" for="primary_contact_person">Primary Contact Person</label>
-                    <input type="text" id="primary_contact_person" class="form-control" placeholder="Primary Contact Person" required="" autofocus=""
-                        autocomplete="state" value="{{doc.primary_contact_person or ''}}">
-                </div>
-                <div class="form-group">
-                    <label class="form-label sr-only" for="primary_contact_no">Primary Contact No</label>
-                    <input type="text" id="primary_contact_no" class="form-control" placeholder="Primary Contact No" required="" value="{{doc.primary_contact_no or ''}}">
-                </div>
-                <div class="form-group">
-                    <label class="form-label sr-only" for="email_id">Email</label>
-                    <input type="text" id="email_id" class="form-control" placeholder="Email" required="" value="{{doc.email_id or ''}}" readonly>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="page-card-body">
-                <div class="form-group">
-                    <label class="form-label sr-only" for="alternate_contact_person">Alternate Contact Person</label>
-                    <input type="text" id="alternate_contact_person" class="form-control" placeholder="Alternate Contact Person" required="" autofocus=""
-                        autocomplete="state" value="{{doc.alternate_contact_person or ''}}">
-                </div>
-                <div class="form-group">
-                    <label class="form-label sr-only" for="alternate_contact_no">Primary Contact No</label>
-                    <input type="text" id="alternate_contact_no" class="form-control" placeholder="Alternate Contact No" required="" value="{{doc.alternate_contact_no or ''}}">
-                </div>
-                <div class="form-group">
-                    <label class="form-label sr-only" for="alternate_email_id">Email</label>
-                    <input type="text" id="alternate_email_id" class="form-control" placeholder="Alternate Email" required="" value="{{doc.alternate_email_id or ''}}">
-                </div>
-            </div>
-        </div>
-
-    </div>
 
     <div class="row">
         <div class="col">
-            <div class="page-card-actions">
-                <button class="btn btn-sm btn-primary btn-block btn-send">Update</button>
-            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">My Business Profile</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="card-description">
+                                    Primary Contact
+                                </p>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Contact Person</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="Primary Contact Person" id="primary_contact_person" value="{{doc.primary_contact_person or ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="card-description">
+                                    Secondary Contact
+                                </p>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Contact Person</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="Secondart Contact Person" id="alternate_contact_person" value="{{doc.alternate_contact_person or ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Primary Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" readonly  id="email_id" value="{{doc.email_id or ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" placeholder="Secondary Email"  id="alternate_email_id" value="{{doc.alternate_email_id or ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Contact Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" placeholder="Primary Contact No" id="primary_contact_no"  value="{{doc.primary_contact_no or ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Contact number</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" placeholder="Secondary Contact No" id="alternate_contact_no"  value="{{doc.alternate_contact_no or ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
 
+                        <p class="card-description">
+                            Address
+                        </p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Address 1</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="address_1" value="{{ doc.address_1 or ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">State</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" id="state">
+                                            <option>{{doc.state or ''}}</option>
+                                            {% for state in states %}
+                                            <option>{{ state.name }}</option>
+                                            {% endfor %}
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Address 2</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="address_2" value="{{doc.address_2 or ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Pincode</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="pincode" value="{{doc.pincode or ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">City</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="city" value="{{doc.city or ''}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Country</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" id="country">
+                                            <option>{{doc.country or ''}}</option>
+                                            {% for country in countries %}
+                                            <option>{{ country.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                </div>
+                
+            </div>
+            <button class="btn btn-primary mt-3 btn-send">Update</button>
         </div>
     </div>
 </div>
+
 
 <script>
     {% include "templates/includes/partner/partner-profile.js" %}

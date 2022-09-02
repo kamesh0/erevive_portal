@@ -16,8 +16,12 @@ def get_context(context):
         raise frappe.PermissionError
 
     doc = frappe.get_doc("Partner", partner.name)
+    countries = frappe.get_all("Country")
+    states = frappe.get_all("State")
 
     context.doc = doc
+    context.countries = countries
+    context.states = states
 
 @frappe.whitelist()
 def update_partner_profile(payload=None):

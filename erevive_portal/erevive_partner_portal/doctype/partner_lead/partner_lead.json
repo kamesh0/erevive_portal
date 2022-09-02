@@ -19,6 +19,14 @@
   "contact_person",
   "email_id",
   "contact_no",
+  "section_break_14_section",
+  "product",
+  "section_break_13",
+  "billing_amount",
+  "column_break_15",
+  "amount_received",
+  "column_break_17",
+  "partner_margin",
   "section_break_9",
   "partner",
   "partner_resource",
@@ -121,11 +129,49 @@
    "fieldtype": "Data",
    "label": "contact_no",
    "reqd": 1
+  },
+  {
+   "fieldname": "section_break_13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "billing_amount",
+   "fieldtype": "Currency",
+   "label": "Billing Amount"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_received",
+   "fieldtype": "Currency",
+   "label": "Amount Received"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "partner_margin",
+   "fieldtype": "Percent",
+   "label": "Partner Margin"
+  },
+  {
+   "fieldname": "section_break_14_section",
+   "fieldtype": "Section Break",
+   "label": "section_break_14"
+  },
+  {
+   "fieldname": "product",
+   "fieldtype": "Link",
+   "label": "Product",
+   "options": "Product"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-08-22 13:01:31.438076",
+ "modified": "2022-09-03 00:12:19.110358",
  "modified_by": "Administrator",
  "module": "eRevive Partner Portal",
  "name": "Partner Lead",

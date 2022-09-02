@@ -19,6 +19,12 @@ def get_context(context):
 
     context.doc = doc
 
+    states = frappe.get_all("State")
+    countries = frappe.get_all("Country")
+
+    context.states = states
+    context.countries = countries
+
 @frappe.whitelist()
 def create_new_lead(payload=None):
     payload = frappe._dict(json.loads(payload))
