@@ -3,6 +3,8 @@ import frappe
 def get_context(context):
 
     context.show_sidebar = True
+    context.no_cache = True
+
 
     partner = frappe.db.get_value(
         "Partner",
