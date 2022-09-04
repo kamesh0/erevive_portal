@@ -18,3 +18,5 @@ def get_context(context):
     leads = frappe.db.get_all("Partner Lead", fields=["*"], filters={"partner": partner.name})
 
     context.leads = leads
+
+    return context
