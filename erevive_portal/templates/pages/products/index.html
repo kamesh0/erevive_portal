@@ -1,0 +1,67 @@
+{% extends "templates/web.html" %}
+
+{%- block head_include %}
+<link rel="stylesheet" href="/assets/erevive_portal/sky/vendors/feather/feather.css">
+<link rel="stylesheet" href="/assets/erevive_portal/sky/vendors/ti-icons/css/themify-icons.css">
+<link rel="stylesheet" href="/assets/erevive_portal/sky/vendors/css/vendor.bundle.base.css">
+<link rel="stylesheet" href="/assets/erevive_portal/sky/css/vertical-layout-light/style.css">
+
+{% endblock -%}
+
+{% block page_content %}
+
+<div class="container">
+    <div class="content-wrapper rounded">
+
+        <div class="row">
+
+            {% for product in products %}
+
+            <div class="col-sm-4 mb-3">
+                <div class="card">
+                    <div class="card-body mt-3 ml-2 p-1">
+                        <h4>{{ product.product_name }}</h4>
+                    </div>
+                    <img class="card-img-top img-fluid" src="{{ product.image }}" alt="Card image cap">
+                    <div class="card-body">
+                        
+                        <div class="row">
+                            <div class="col">
+                                <h3>{{ product.price }}</h3>
+                                <p class="font-weight-500 mb-0">{{ product.product_description }} </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mt-1"><label class="badge badge-warning">{{ product.category }}</label></div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-right">
+                                <a type="button" class="btn btn-outline btn-rounded btn-icon">
+                                    <i class="ti-shopping-cart"></i>
+                                </a>
+                                <a href="{{ product.web_route }}" type="button" class="btn btn-outline btn-rounded btn-icon">
+                                    <i class="ti-write"></i>
+                                </a>
+                                {% if product.youtube_link %}
+                                <a href="{{ product.youtube_link }}" target="_blank" type="button" class="btn btn-outline btn-rounded btn-icon">
+                                    <i class="ti-youtube"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if loop.index % 3 == 0 %}
+                <div class="w-100"></div>
+            {% endif %}
+
+            {% endfor %}
+
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

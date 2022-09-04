@@ -11,7 +11,11 @@
   "product_name",
   "product_description",
   "price",
-  "category"
+  "category",
+  "image",
+  "section_break_7",
+  "youtube_link",
+  "web_route"
  ],
  "fields": [
   {
@@ -28,7 +32,7 @@
   },
   {
    "fieldname": "product_description",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Product Description"
@@ -47,11 +51,32 @@
    "in_standard_filter": 1,
    "label": "Category",
    "options": "\nAccounting\nInvoice Printing\nSecurity"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "youtube_link",
+   "fieldtype": "Data",
+   "label": "YouTube Link"
+  },
+  {
+   "fieldname": "web_route",
+   "fieldtype": "Data",
+   "label": "Web Route"
   }
  ],
+ "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-09-03 00:16:29.297692",
+ "modified": "2022-09-04 11:27:50.807240",
  "modified_by": "Administrator",
  "module": "eRevive Partner Portal",
  "name": "Product",
