@@ -21,9 +21,11 @@ def get_context(context):
 
     states = frappe.get_all("State")
     countries = frappe.get_all("Country")
+    products = frappe.get_all("Product", fields=["*"])
 
     context.states = states
     context.countries = countries
+    context.products = products
 
 @frappe.whitelist()
 def create_new_lead(payload=None):
@@ -50,6 +52,8 @@ def create_new_lead(payload=None):
     doc.email_id = payload.email_id
     doc.contact_no = payload.contact_no
     doc.partner = partner.name
+    doc.remarks = payload.remarks
+    doc.product = payload.product
     doc.status = "Open"
 
     doc.save(ignore_permissions=True)

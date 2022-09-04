@@ -11,6 +11,8 @@ frappe.ready(function() {
 		var contact_person = $("#contact_person").val();
 		var contact_no = $("#contact_no").val();
 		var email_id = $("#email_id").val();
+		var product = $("#product").val();
+		var remarks = $("#remarks").val();
 
 		var req= {
             company_name: company_name,
@@ -21,7 +23,9 @@ frappe.ready(function() {
 			country: country,
 			contact_person: contact_person,
 			email_id: email_id,
-			contact_no: contact_no
+			contact_no: contact_no,
+			remarks: remarks,
+			product: product
 		}
 
 		frappe.call({

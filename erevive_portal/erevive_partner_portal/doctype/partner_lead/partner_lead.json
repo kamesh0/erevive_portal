@@ -21,6 +21,7 @@
   "contact_no",
   "section_break_14_section",
   "product",
+  "remarks",
   "section_break_13",
   "billing_amount",
   "column_break_15",
@@ -127,7 +128,7 @@
   {
    "fieldname": "contact_no",
    "fieldtype": "Data",
-   "label": "contact_no",
+   "label": "Contact No",
    "reqd": 1
   },
   {
@@ -159,19 +160,23 @@
   },
   {
    "fieldname": "section_break_14_section",
-   "fieldtype": "Section Break",
-   "label": "section_break_14"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "product",
    "fieldtype": "Link",
    "label": "Product",
    "options": "Product"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-09-03 00:12:19.110358",
+ "modified": "2022-09-04 12:30:21.728431",
  "modified_by": "Administrator",
  "module": "eRevive Partner Portal",
  "name": "Partner Lead",

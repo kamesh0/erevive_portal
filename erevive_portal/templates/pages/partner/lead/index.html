@@ -66,7 +66,12 @@
                       {{ lead.state}}
                     </td>
                     <td>
+                        {% if lead.status == 'Won' %}
+                        <label class="badge badge-success">{{ lead.status }}</label>
+                        {% else %}
                         <label class="badge badge-danger">{{ lead.status }}</label>
+                        {% endif %}
+                        
                     </td>
                   </tr>
                   {% endfor %}
