@@ -26,144 +26,147 @@
     <div class="row">
         <div class="col">
             <div class="card">
+                <form  id="frmFileUp">
+                
                 <div class="card-body">
                     <h4 class="card-title">My Business Profile</h4>
                         <div class="row">
-                            <div class="col-md-6">
-                                <p class="card-description">
-                                    Primary Contact
-                                </p>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Contact Person</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Primary Contact Person" id="primary_contact_person" value="{{doc.primary_contact_person or ''}}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="card-description">
-                                    Secondary Contact
-                                </p>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Contact Person</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="Secondart Contact Person" id="alternate_contact_person" value="{{doc.alternate_contact_person or ''}}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Primary Email</label>
-                                    <div class="col-sm-9">
-                                        <input type="email" class="form-control" readonly  id="email_id" value="{{doc.email_id or ''}}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Email</label>
-                                    <div class="col-sm-9">
-                                        <input type="email" class="form-control" placeholder="Secondary Email"  id="alternate_email_id" value="{{doc.alternate_email_id or ''}}">
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Contact Number</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Primary Contact No" id="primary_contact_no"  value="{{doc.primary_contact_no or ''}}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Contact number</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" placeholder="Secondary Contact No" id="alternate_contact_no"  value="{{doc.alternate_contact_no or ''}}">
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
 
-                        <p class="card-description">
-                            Address
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Address 1</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="address_1" value="{{ doc.address_1 or ''}}">
-                                    </div>
-                                </div>
+                            {% for docs in meta.fields %}
+                            
+                            {% if docs.fieldtype == "Tab Break" %}
+                            <div class="col-md-12">
+                                <p class="card-description">
+                                    {{docs.label}}
+                                </p>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">State</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="state">
-                                            <option>{{doc.state or ''}}</option>
-                                            {% for state in states %}
-                                            <option>{{ state.name }}</option>
-                                            {% endfor %}
-                                        </select>
 
+                            {% elif docs.fieldtype == "Check"%}
+
+                            <div></div>
+                            {% elif docs.fieldtype == "Column Break"%}
+
+                            <div></div>
+
+                            {% elif docs.fieldtype == "Link"%}
+                            {% set options = frappe.get_all(docs.options)%}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <label class="">{{docs.label}}</label>
+
+                                            <select class="form-control" id="{{docs.fieldname}}">
+                                                <option>{{doc[docs.fieldname] or 'Please select'}}</option>
+                                                {% for state in options %}
+                                                <option>{{ state.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            </div>
+                                            </div>
+                                </div>
+                                {% elif docs.fieldtype == "Select"%}
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <label class="">{{docs.label}} </label>
+                                                {% set options = docs.options %}
+                                                {% set opt = list(options.split("\n"))%}
+                                                  
+                                                <select class="form-control" id="{{docs.fieldname}}">
+                                                    <option value="{{ doc[docs.fieldname] or ''}}">{{ doc[docs.fieldname] or 'Please select'}}</option>
+                                                    {% for op in opt %}
+                                                        {% if op %}
+                                                            <option>{{ op }}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                                </div>
+                                                </div>
+                                    </div>
+                            {% elif docs.fieldtype == "Attach"%}
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <label class="">{{docs.label}}</label>
+                                                <input type="file"  class="form-control {{docs.fieldname}}" id="{{docs.fieldname}}" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        frappe.ready(function() {
+                                            $('#{{docs.fieldname}}').change(function(){
+                                            var $input = $(this);
+                                            var input = $input.get(0);
+                                            console.log('file selected')
+                                            
+                                            if(input.files.length) {
+                                                input.filedata = { "files_data" : [] }; //Initialize as json array.
+
+                                                window.file_reading = true;
+
+                                                $.each(input.files, function(key, value) {
+                                                setupReader(value, input);
+                                                });
+
+                                                window.file_reading = false;
+                                            }
+                                            });
+
+                                            
+                                            
+                                        });
+
+                                        function setupReader(file, input) {
+                                            var name = file.name;
+                                            var reader = new FileReader();  
+                                            reader.onload = function(e) {
+                                            input.filedata.files_data.push({
+                                                "__file_attachment": 1,
+                                                "filename": file.name,
+                                                "dataurl": reader.result
+                                            })
+                                            }
+                                            reader.readAsDataURL(file);
+                                        }
+                                    </script>
+
+
+
+                            {% else %}
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <label class="">{{docs.label}}</label>
+                                            <input type="text" class="form-control" placeholder="{{docs.label}}" 
+                                            id="{{docs.fieldname}}" value="{{doc[docs.fieldname] or ''}}">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
+
+                            {% endif %}
+                            
+                            
+                            {% endfor%}
+
+                            
+                            <!-- <div class="col-md-6">
+                               
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Address 2</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="address_2" value="{{doc.address_2 or ''}}">
+                                    <div class="col-sm-12">
+                                        <label >Attach Documents </label>
+                                        <input type="file" class="form-control" id="anyFile">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Pincode</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="pincode" value="{{doc.pincode or ''}}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">City</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="city" value="{{doc.city or ''}}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Country</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="country">
-                                            <option>{{doc.country or ''}}</option>
-                                            {% for country in countries %}
-                                            <option>{{ country.name }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                            </div> -->
                         </div>
                         
                 </div>
+                </form>
                 
             </div>
-            <button class="btn btn-primary mt-3 btn-send">Update</button>
+            <button class="btn btn-primary mt-3 btn-send" id="btn_upload1">Update</button>
         </div>
     </div>
 </div>
