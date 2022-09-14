@@ -11,7 +11,6 @@ class Partner(Document):
 				recipients=self.email_id,
 				template="partner_signup",
 				args={"first_name":self.primary_contact_person},
-				header=
 			)
 		except Exception as e:
 			frappe.throw(e)
