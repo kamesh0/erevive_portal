@@ -67,8 +67,8 @@ def create_new_lead(payload=None):
     
 @frappe.whitelist()
 def fetch_category_product(category=None):
-    category_data = frappe.get_all("Product", filters={'category':category}, fields=["*"])
-    # category_name = frappe.get_doc("Product", category)
+    category_name = frappe.get_doc("Product", category)
+    category_data = frappe.get_all("Product", filters={'category':category_name.product_name}, fields=["*"])
 
     html= """\
     <div class="form-group">
@@ -76,10 +76,10 @@ def fetch_category_product(category=None):
     <select class="form-control" id="sub_product">
     <option value=""> Select Product</option>
     
-    """.format(category=category)
+    """.format(category=category_name.product_name)
 
     for product in category_data:
-        html = html + f"<option value={product.product_name}>"+ product.product_name+ "</option>"
+        html = html + f"<option value={product.name}>"+ product.product_name+ "</option>"
 
     html = html + " </select></div>"
 

@@ -13,18 +13,19 @@
 <div class="container">
     <div class="content-wrapper rounded">
         {% set type = frappe.form_dict.type %}
-        <h2>List of {{type}}</h2>
+        <h2><strong>List of {{type}}</strong> </h2>
+                <!-- <input class="form-control mb-3 " id="filter" type="search" placeholder="Search {{type}}" aria-label="Search"> -->
         <div class="row">
 
             {% for product in products %}
             
             {% if type == product.category %}
-
-            <div class="col-sm-12 mb-3">
+            
+            <div class="col-sm-12 mb-3 " id="results">
                 <div class="card">
-                    <div class="card-body mt-3 ml-2 p-1">
-                        <h4>{{ product.product_name }} </h4>
-                    </div>
+                    <!-- <div class="card-body mt-3 ml-2 p-1">
+                        <h4><strong>{{ product.product_name }}</strong> </h4>
+                    </div> -->
                     <!-- <img class="card-img-top img-fluid" src="{{ product.image }}" alt="Card image cap"> -->
                     <div class="card-body">
                         
@@ -35,9 +36,11 @@
                             <div class="col-md-9">
                                 <div class="row">
                                     <div class="col">
+                                        <h4><strong>{{ product.product_name }}</strong> </h4>
+
                                         <h3>{{ product.price }}</h3>
                                         <h5>Code : {{ product.name }}</h5>
-                                        <p class="font-weight-500 mb-0">{{ product.product_description }} </p>
+                                        <p class="font-weight-400 mb-0">{{ product.product_description[:150]  }} </p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -46,9 +49,17 @@
                                         <!-- <a type="button" class="btn btn-outline btn-rounded btn-icon">
                                             <i class="ti-shopping-cart"></i>
                                         </a> -->
-                                        <a href="{{ product.web_route }}" type="button" class="btn btn-outline btn-rounded btn-icon">
-                                            <i class="ti-write"></i>
-                                        </a>
+                                        {% if product.product_name == "Tally Addons" %}
+                                        {% set link_url = 'products?type=Tally Addons'  %}
+                                            <a href="{{ link_url }}" type="button" class="btn btn-primary ">
+                                                <i class="ti-eye"></i> View Product
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ product.route }}" type="button" class="btn btn-primary ">
+                                                <i class="ti-eye"></i> View Product
+                                            </a>
+                                        {% endif %}
+                                        
                                         {% if product.youtube_link %}
                                         <a href="{{ product.youtube_link }}" target="_blank" type="button" class="btn btn-outline btn-rounded btn-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="-35.20005 -41.33325 305.0671 247.9995"><path d="M229.763 25.817c-2.699-10.162-10.65-18.165-20.748-20.881C190.716 0 117.333 0 117.333 0S43.951 0 25.651 4.936C15.553 7.652 7.6 15.655 4.903 25.817 0 44.236 0 82.667 0 82.667s0 38.429 4.903 56.85C7.6 149.68 15.553 157.681 25.65 160.4c18.3 4.934 91.682 4.934 91.682 4.934s73.383 0 91.682-4.934c10.098-2.718 18.049-10.72 20.748-20.882 4.904-18.421 4.904-56.85 4.904-56.85s0-38.431-4.904-56.85" fill="red"/><path d="M93.333 117.559l61.333-34.89-61.333-34.894z" fill="#fff"/></svg>
@@ -66,7 +77,8 @@
             {% endif %}
 
             {% if loop.index % 3 == 0 %}
-                <div class="w-100"></div>
+
+            <div class="w-100"></div>
             {% endif %}
 
             {% endfor %}

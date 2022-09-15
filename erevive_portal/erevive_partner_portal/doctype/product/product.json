@@ -91,7 +91,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2022-09-15 12:04:51.423615",
+ "modified": "2022-09-15 12:53:00.918303",
  "modified_by": "Administrator",
  "module": "eRevive Partner Portal",
  "name": "Product",
@@ -112,6 +112,7 @@
   }
  ],
  "route": "more_product",
+ "search_fields": "product_name",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

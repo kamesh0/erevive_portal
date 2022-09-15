@@ -35,7 +35,7 @@ def fetch_lead_details(lead_name):
     <p><strong>Contact Person Name </strong> : {lead.contact_person}</p>
     <p><strong>Contact Number </strong> : {lead.contact_no}</p>
     <p><strong>Email </strong> : {lead.email_id}</p>
-    <p><strong>Product </strong> : {product.product_name}</p>
+    <p><strong>Product </strong> : {product.category}</p>
     </div>
 
     <div class="col-sm-6">
