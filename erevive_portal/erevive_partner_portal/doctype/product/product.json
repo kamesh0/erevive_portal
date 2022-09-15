@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2022-09-03 00:12:12.353628",
@@ -15,7 +16,9 @@
   "image",
   "section_break_7",
   "youtube_link",
-  "web_route"
+  "web_route",
+  "route",
+  "published"
  ],
  "fields": [
   {
@@ -46,11 +49,9 @@
   },
   {
    "fieldname": "category",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
+   "fieldtype": "Link",
    "label": "Category",
-   "options": "\nAccounting\nInvoice Printing\nSecurity"
+   "options": "Product"
   },
   {
    "fieldname": "image",
@@ -71,12 +72,26 @@
    "fieldname": "web_route",
    "fieldtype": "Data",
    "label": "Web Route"
+  },
+  {
+   "fetch_from": "category.product_name",
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "default": "0",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "Published"
   }
  ],
+ "has_web_view": 1,
  "image_field": "image",
  "index_web_pages_for_search": 1,
+ "is_published_field": "published",
  "links": [],
- "modified": "2022-09-04 11:27:50.807240",
+ "modified": "2022-09-15 06:14:27.132984",
  "modified_by": "Administrator",
  "module": "eRevive Partner Portal",
  "name": "Product",
@@ -96,6 +111,7 @@
    "write": 1
   }
  ],
+ "route": "more_product",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

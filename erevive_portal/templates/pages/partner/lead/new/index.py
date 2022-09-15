@@ -32,6 +32,7 @@ def get_context(context):
 @frappe.whitelist()
 def create_new_lead(payload=None):
     payload = frappe._dict(json.loads(payload))
+    print(payload)
 
     partner = frappe.db.get_value(
             "Partner",
@@ -56,6 +57,7 @@ def create_new_lead(payload=None):
     doc.partner = partner.name
     doc.remarks = payload.remarks
     doc.product = payload.product
+    doc.pincode = payload.pincode
     doc.status = "Open"
 
     doc.save(ignore_permissions=True)
@@ -63,3 +65,26 @@ def create_new_lead(payload=None):
     frappe.response["message"] = "okay"
     return "okay"
     
+@frappe.whitelist()
+def fetch_category_product(category=None):
+    category_data = frappe.get_all("Product", filters={'category':category}, fields=["*"])
+    category_name = frappe.get_doc("Product", category)
+
+    html= """\
+    <div class="form-group">
+    <label class="form-label">Select {category}</label>
+    <select class="form-control" id="sub_product">
+    <option value=""> Select Product</option>
+    
+    """.format(category=category_name.product_name)
+
+    for product in category_data:
+        html = html + f"<option value={product.name}>"+ product.product_name+ "</option>"
+
+    html = html + " </select></div>"
+
+    if category_data:
+        return html
+
+    else :
+        return ''

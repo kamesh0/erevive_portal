@@ -50,7 +50,8 @@
             <tbody>
                 {% for lead in leads %}
                 <tr>
-                    <td class="py-1">
+                    <td  data-toggle="modal" 
+                    data-target="#lead_details_modal" data-whatever="{{ lead.name }}">
                       {{ lead.name }}
                     </td>
                     <td>
@@ -82,6 +83,52 @@
     </div>
   </div>
 </div>
+</div>
+
+<script>
+  frappe.ready(function(){
+    $('#lead_details_modal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var lead_name = button.data('whatever') 
+    
+    var modal = $(this)
+    modal.find('.modal-title').text(lead_name)
+    modal.find('.modal-body input').val(lead_name)
+
+    frappe.call({
+          method: "erevive_portal.templates.pages.partner.lead.index.fetch_lead_details",
+          args: { "lead_name": lead_name },
+          freeze: true,
+          callback: function (r) {
+              if (!r.exc) {
+                console.log(r.message)
+                  document.getElementById("create_product_list").innerHTML = r.message
+              } 
+          }
+      });
+    })
+  })
+</script>
+
+<div class="modal fade" id="lead_details_modal" tabindex="-1" role="dialog" aria-labelledby="lead_details_modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row" id="create_product_list">
+                        
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
