@@ -11,8 +11,14 @@ frappe.ready(function() {
 		var contact_person = $("#contact_person").val();
 		var contact_no = $("#contact_no").val();
 		var email_id = $("#email_id").val();
-		var product = $("#product").val();
+		var pincode = $("#pincode").val();
 		var remarks = $("#remarks").val();
+		var sub_product = $("#sub_product").val();
+		if (sub_product){
+			var product = $("#sub_product").val();
+		}else{
+			var product = $("#product").val();
+		}
 
 		var req= {
             company_name: company_name,
@@ -25,7 +31,8 @@ frappe.ready(function() {
 			email_id: email_id,
 			contact_no: contact_no,
 			remarks: remarks,
-			product: product
+			product: product,
+			pincode: pincode
 		}
 
 		frappe.call({

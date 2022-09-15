@@ -27,46 +27,67 @@
                                 <input type="text" class="form-control" id="company_name">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                    
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-label">Contact Person Name</label>
                                 <input type="text" class="form-control" id="contact_person">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                    
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-label">Contact Number</label>
                                 <input type="number" class="form-control" id="contact_no">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                    
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-label">Email Id</label>
                                 <input type="email" class="form-control" id="email_id">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                    
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-label">Interested in Product</label>
-                                <select class="form-control">
-                                    <option value=""></option>
+                                <select class="form-control product" id="product">
+                                    <option value="">Please Select Product</option>
                                     {% for product in products %}
-                                        <option value="{{ product.name }}">{{ product.product_name }}</option>
+                                        {% if product.category == 'Product' %}
+                                            <option value="{{ product.name }}">{{ product.product_name }}</option>
+                                        {% endif %}
                                     {% endfor %}
                                 </select>
                             </div>
                         </div>
+
+                        <script>
+                            frappe.ready(function(){
+                                $("#product").change(function(){
+                                    var product = $("#product").val();
+                                    var product_name = $(".product").val();
+                                    console.log(product_name)
+                                    frappe.call({
+                                        method: "erevive_portal.templates.pages.partner.lead.new.index.fetch_category_product",
+                                        args: { "category": product },
+                                        freeze: true,
+                                        callback: function (r) {
+                                            if (!r.exc) {
+                                                document.getElementById("create_product_list").innerHTML = r.message
+                                            } 
+                                        }
+                                    });
+                                    
+
+                                });
+                            });
+                        </script>
+                    <div class="col-md-6" id="create_product_list">
+                        
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-label">Remarks / Customer Requirements</label>
                                 <textarea class="form-control" rows="4" cols="50" id="remarks"></textarea>
@@ -77,19 +98,19 @@
                     <p class="card-description"> Address </p>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Address 1</label>
-                                <div class="col-sm-9">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label >Address 1</label>
                                     <input type="text" class="form-control" id="address_1">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">State</label>
-                                <div class="col-sm-9">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label >State</label>
                                     <select class="form-control" id="state">
-                                        <option></option>
+                                        <option value="">Please Select State</option>
                                         {% for state in states %}
                                         <option> {{ state.name }}</option>
                                         {% endfor %}
@@ -97,40 +118,38 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                    
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Address 2</label>
-                                <div class="col-sm-9">
+                            <div class="form-group ">
+                                <div class="col-sm-12">
+                                    <label >Address 2</label>
                                     <input type="text" class="form-control" id="address_2">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Pincode</label>
-                                <div class="col-sm-9">
+                            <div class="form-group ">
+                                <div class="col-sm-12">
+                                    <label >Pincode</label>
                                     <input type="text" class="form-control" id="pincode">
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                    
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">City</label>
-                                <div class="col-sm-9">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label >City</label>
                                     <input type="text" class="form-control" id="city">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Country</label>
-                                <div class="col-sm-9">
+                            <div class="form-group ">
+                                <div class="col-sm-12">
+                                    <label >Country</label>
                                     <select class="form-control" id="country">
-                                        <option></option>
+                                        <option value="">Please Select Country</option>
                                         {% for country in countries %}
                                         <option> {{ country.name }}</option>
                                         {% endfor %}
