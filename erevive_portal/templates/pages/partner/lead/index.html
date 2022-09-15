@@ -101,7 +101,6 @@
           freeze: true,
           callback: function (r) {
               if (!r.exc) {
-                console.log(r.message)
                   document.getElementById("create_product_list").innerHTML = r.message
               } 
           }

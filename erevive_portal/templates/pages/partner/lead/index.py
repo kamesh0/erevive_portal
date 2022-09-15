@@ -31,18 +31,25 @@ def fetch_lead_details(lead_name):
     html = """\
     
     <div class="col-sm-6">
-    <p><strong>Company Name </strong> : {lead.company_name}</p>
-    <p><strong>Contact Person Name </strong> : {lead.contact_person}</p>
-    <p><strong>Contact Number </strong> : {lead.contact_no}</p>
-    <p><strong>Email </strong> : {lead.email_id}</p>
-    <p><strong>Product </strong> : {product.category}</p>
+    <table>
+    <tr><td><p><strong>Company Name </strong></p> </td> <td><p> : {lead.company_name} </td></p> </tr>
+    <tr><td><p><strong>Contact Person Name </strong> </p> </td> <td><p> : {lead.contact_person} </td></p> </tr>
+    <tr><td><p><strong>Contact Number </strong></p> </td> <td><p> : {lead.contact_no} </td></p> </tr>
+    <tr><td><p><strong>Email </strong></p> </td> <td><p> : {lead.email_id} </td></p> </tr>
+    <tr><td><p><strong>Product </strong></p> </td> <td><p> : {product.category} </td></p> </tr>
+    <tr><td><p><strong>Address </strong></p> </td> <td><p> : {lead.address_1}, {lead.address_2}, {lead.city},
+     {lead.state}, {lead.country} </td></p> </tr>
+    </table>
+    
     </div>
 
     <div class="col-sm-6">
-    <p><strong>Billing Amount </strong> : {lead.amount_received}</p>
-    <p><strong>Amount Received </strong> : {lead.amount_received}</p>
-    <p><strong>Partner Margin </strong> : {lead.partner_margin}</p>
-   
+     <table>
+    <tr><td><p><strong>Billing Amount </strong></p> </td> <td><p> : {lead.billing_amount} </td></p> </tr>
+    <tr><td><p><strong>Amount Received</strong> </p> </td> <td><p> : {lead.amount_received} </td></p> </tr>
+    <tr><td><p><strong>Partner Margin </strong></p> </td> <td><p> : {lead.partner_margin} </td></p> </tr>
+    </table>
+    
     </div>
    
     """.format(lead=lead, product=product)
