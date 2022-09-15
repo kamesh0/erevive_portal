@@ -67,8 +67,8 @@ def create_new_lead(payload=None):
     
 @frappe.whitelist()
 def fetch_category_product(category=None):
-    category_data = frappe.get_all("Product", filters={'category':category}, fields=["*"])
     category_name = frappe.get_doc("Product", category)
+    category_data = frappe.get_all("Product", filters={'category':category_name.product_name}, fields=["*"])
 
     html= """\
     <div class="form-group">
