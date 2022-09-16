@@ -92,6 +92,10 @@ def upload_files(document_pan, document_gst):
             print(file_name)
             filedoc = save_file(file_name, fd["dataurl"], "Partner", partner.name, decode=True, is_private=1)
 
+            update_pan = frappe.get_doc("Partner", partner.name)
+            update_pan.document_pan = file_name
+            update_pan.save()
+
     if document_gst:
         fd_json = json.loads(document_gst)
         fd_list = list(fd_json["files_data"])
@@ -99,5 +103,9 @@ def upload_files(document_pan, document_gst):
         for fd in fd_list:
             file_name = f"{partner.name}-GST"
             filedoc = save_file(file_name, fd["dataurl"], "Partner", partner.name, decode=True, is_private=1)
+
+            update_gst = frappe.get_doc("Partner", partner.name)
+            update_gst.document_gst = file_name
+            update_gst.save()
     
 
