@@ -13,33 +13,14 @@
 <div class="container">
     <div class="content-wrapper rounded">
         {% set type = frappe.form_dict.type %}
+        {% set product_id = frappe.form_dict.p %}
         <h2><strong>List of {{type}}</strong> </h2>
-        {% if type == "Tally Addons" %}
-            <div class="row">
-                <div class="col-md-9">
-                    <input class="form-control mb-3 custom-select-lg"  id="searchinput" type="search" placeholder="Search {{type}}"
-                        aria-label="Search">
-                </div>
-                <div class="col-md-3">
-                    <select class="form-control mb-3 custom-select custom-select-lg" id="selectiput" type="search">
-                        <option value="">All {{type}}</option>
-                        <option>Tally </option>
-                    </select>
-                </div>
-            </div>
-        {% endif %}
         <div class="row">
 
-            {% for product in products %}
-
-            {% if type == product.category %}
-
+           
+<!-- 
             <div class="col-sm-12 mb-3 results">
                 <div class="card">
-                    <!-- <div class="card-body mt-3 ml-2 p-1">
-                        <h4><strong>{{ product.product_name }}</strong> </h4>
-                    </div> -->
-                    <!-- <img class="card-img-top img-fluid" src="{{ product.image }}" alt="Card image cap"> -->
                     <div class="card-body">
 
                         <div class="row">
@@ -60,9 +41,7 @@
                                     <div class="col-2 mt-2"><label class="badge badge-warning">{{ product.category
                                             }}</label></div>
                                     <div class="col mt-2 text-right">
-                                        <!-- <a type="button" class="btn btn-outline btn-rounded btn-icon">
-                                            <i class="ti-shopping-cart"></i>
-                                        </a> -->
+                                       
                                         {% if product.product_name == "Tally Addons" %}
                                         {% set link_url = 'products?type=Tally Addons' %}
                                         <a href="{{ link_url }}" type="button" class="btn btn-primary ">
@@ -94,15 +73,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            {% endif %}
-
-            {% if loop.index % 3 == 0 %}
-
-            <div class="w-100"></div>
-            {% endif %}
-
-            {% endfor %}
+            </div> -->
+       
 
 
 
