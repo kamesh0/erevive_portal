@@ -39,11 +39,11 @@ def new_partner_request(company="", email="", contact_person="", mobile=""):
 
     partner.insert(ignore_permissions=True, ignore_mandatory=True)
 
-    try:
-        subject = "Welcome! Partner Onboarding"
-        content = f"<p>Dear {contact_person}</p><p>eRevive Technologies, Welcomes You. <p> Our Team will get in touch with you shortly</p>"
-        frappe.sendmail(recipients=email, message=content, subject=subject)
-    except Exception as e:
-        frappe.log_error(e)
+    # try:
+    #     subject = "Welcome! Partner Onboarding"
+    #     content = f"<p>Dear {contact_person}</p><p>eRevive Technologies, Welcomes You. <p> Our Team will get in touch with you shortly</p>"
+    #     frappe.sendmail(recipients=email, message=content, subject=subject)
+    # except Exception as e:
+    #     frappe.log_error(e)
 
     return "okay"
