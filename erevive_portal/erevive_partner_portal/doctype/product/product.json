@@ -19,7 +19,8 @@
   "youtube_link",
   "web_route",
   "route",
-  "published"
+  "published",
+  "sorting"
  ],
  "fields": [
   {
@@ -92,6 +93,13 @@
    "fieldtype": "Link",
    "label": "Addon Category",
    "options": "Addon Category"
+  },
+  {
+   "description": "Higher the number higher the priority",
+   "fieldname": "sorting",
+   "fieldtype": "Select",
+   "label": "Sorting",
+   "options": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10"
   }
  ],
  "has_web_view": 1,
@@ -99,7 +107,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2022-09-17 14:18:43.353344",
+ "modified": "2022-09-17 14:39:25.435352",
  "modified_by": "Administrator",
  "module": "eRevive Partner Portal",
  "name": "Product",

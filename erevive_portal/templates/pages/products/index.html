@@ -14,6 +14,7 @@
     <div class="content-wrapper rounded">
         {% set type = frappe.form_dict.type %}
         <h2><strong>List of {{type}}</strong> </h2>
+        <!-- <button class="btn btn-primary" id="sendmsg">Send MSG</button> -->
         {% if type == "Tally Addons" %}
             <div class="row">
                 <div class="col-md-9">
@@ -22,8 +23,11 @@
                 </div>
                 <div class="col-md-3">
                     <select class="form-control mb-3 custom-select custom-select-lg" id="selectiput" type="search">
+                        {% set options = frappe.get_all("Addon Category", fields=["*"]) %}
                         <option value="">All {{type}}</option>
-                        <option>Tally </option>
+                        {% for opt in options %}
+                        <option>{{opt.name}} </option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -44,11 +48,11 @@
 
                         <div class="row">
                             <div class="col-md-3">
-                                <img class="card-img-top img-fluid" src="{{ product.image }}" alt="Card image cap">
+                                <img class="card-img-top img-fluid" src="{{ product.image or 'https://crpf.gov.in/writereaddata/Portal/DGIGMaster_Photos/1_126_1_istockphoto-1357365823-612x612.jpg'}}" alt="Card image cap">
                             </div>
                             <div class="col-md-9">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col mt-2">
                                         <h4><strong>{{ product.product_name }}</strong> </h4>
 
                                         <h3>{{ product.price }}</h3>
@@ -57,9 +61,10 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-2 mt-2"><label class="badge badge-warning">{{ product.category
-                                            }}</label></div>
-                                    <div class="col mt-2 text-right">
+                                    <div class="col-md-2 mt-2">
+                                        <label class="badge badge-warning">{{ product.addon_category}}</label>
+                                    </div>
+                                    <div class="col-md-10 mt-2 text-right">
                                         <!-- <a type="button" class="btn btn-outline btn-rounded btn-icon">
                                             <i class="ti-shopping-cart"></i>
                                         </a> -->
@@ -69,7 +74,7 @@
                                             <i class="ti-eye"></i> View Product
                                         </a>
                                         {% else %}
-                                        <a href="{{ product.route }}" type="button" class="btn btn-primary ">
+                                        <a href="/products/product_details?p={{product.name }}" type="button" class="btn btn-primary ">
                                             <i class="ti-eye"></i> View Product
                                         </a>
                                         {% endif %}
