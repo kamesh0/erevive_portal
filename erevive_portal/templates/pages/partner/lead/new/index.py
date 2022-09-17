@@ -67,8 +67,8 @@ def create_new_lead(payload=None):
     
 @frappe.whitelist()
 def fetch_category_product(category=None):
-    category_name = frappe.get_doc("Product", category)
-    category_data = frappe.get_all("Product", filters={'category':category_name.product_name}, fields=["*"])
+    category_data = frappe.get_doc("Product", category)
+    addon_data_list = frappe.get_all("Addon Category", fields=["*"])
 
     html= """\
     <div class="form-group">
@@ -76,14 +76,14 @@ def fetch_category_product(category=None):
     <select class="form-control" id="sub_product">
     <option value=""> Select Product</option>
     
-    """.format(category=category_name.product_name)
+    """.format(category=category_data.product_name)
 
-    for product in category_data:
-        html = html + f"<option value={product.name}>"+ product.product_name+ "</option>"
+    for product in addon_data_list:
+        html = html + f"<option value={product.name}>"+ product.name+ "</option>"
 
     html = html + " </select></div>"
 
-    if category_data:
+    if category_data.product_name =='Tally Addons':
         return html
 
     else :
