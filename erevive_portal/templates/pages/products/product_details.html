@@ -12,46 +12,64 @@
 
 <div class="container">
     <div class="content-wrapper rounded">
-        {% set type = frappe.form_dict.type %}
-        {% set product_id = frappe.form_dict.p %}
-        <h2><strong>List of {{type}}</strong> </h2>
+        {% set p = frappe.form_dict.p %}
+        {% set product = frappe.get_doc("Product", p )%}
+        <!-- <h2><strong>List of {{type}}</strong> </h2> -->
+        <!-- <button class="btn btn-primary" id="sendmsg">Send MSG</button> -->
+       
         <div class="row">
 
-           
-<!-- 
             <div class="col-sm-12 mb-3 results">
                 <div class="card">
+                    <!-- <div class="card-body mt-3 ml-2 p-1">
+                        <h4><strong>{{ product.product_name }}</strong> </h4>
+                    </div> -->
+                    <!-- <img class="card-img-top img-fluid" src="{{ product.image }}" alt="Card image cap"> -->
                     <div class="card-body">
 
                         <div class="row">
-                            <div class="col-md-3">
-                                <img class="card-img-top img-fluid" src="{{ product.image }}" alt="Card image cap">
+                            <div class="col-md-5">
+                                <label class="badge badge-warning">{{ product.addon_category}}</label>
+                                <img class="card-img-top img-fluid" 
+                                src="{{ product.image or 'https://www.blakenz.org/wp-content/uploads/2021/11/NoImage.jpg'}}" 
+                                alt="{{ product.product_name }}">
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-7">
                                 <div class="row">
                                     <div class="col">
-                                        <h4><strong>{{ product.product_name }}</strong> </h4>
-
-                                        <h3>{{ product.price }}</h3>
+                                        <h3 class="mb-3 mt-3"><strong>{{ product.product_name }}</strong> </h3>
+                                        
+                                        <h5 class="font-weight-400">Price : {{ product.price }}</h5>
                                         <h5>Code : {{ product.name }}</h5>
-                                        <p class="font-weight-400 mb-0">{{ product.product_description[:150] }} </p>
+                                        <!-- <a type="button" id="copy_url" class="badge badge-primary ">
+                                            <i class="ti-clipboard"></i> copy
+                                        </a>
+                                        <a type="button" id="copy_url" class="badge badge-danger ">
+                                            <i class="ti-youtube"></i> copy
+                                        </a> -->
+                                        {% block scripts %}
+                                        <script>
+                                        frappe.ready(function(){
+                                            $("#copy_url").off("click").on("click",function() {
+                                                var text = 'hi nhju jnk'
+                                                navigator.clipboard.writeText(text);
+                                                console.log(text)
+                                                })
+                                        })
+                                                </script>
+                                        {% endblock scripts %}
+                                        <p class="font-weight-400 mb-0"><b>Description</b> : {{ product.product_description }} </p>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-2 mt-2"><label class="badge badge-warning">{{ product.category
-                                            }}</label></div>
+                                    <!-- <div class="col-2 mt-2">
+                                        <label class="badge badge-warning">{{ product.addon_category}}</label>
+                                    </div> -->
                                     <div class="col mt-2 text-right">
-                                       
-                                        {% if product.product_name == "Tally Addons" %}
-                                        {% set link_url = 'products?type=Tally Addons' %}
-                                        <a href="{{ link_url }}" type="button" class="btn btn-primary ">
-                                            <i class="ti-eye"></i> View Product
-                                        </a>
-                                        {% else %}
-                                        <a href="{{ product.route }}" type="button" class="btn btn-primary ">
-                                            <i class="ti-eye"></i> View Product
-                                        </a>
-                                        {% endif %}
+                                        <!-- <a type="button" class="btn btn-outline btn-rounded btn-icon">
+                                            <i class="ti-share"></i> copy
+                                        </a> -->
+                                     
 
                                         {% if product.youtube_link %}
                                         <a href="{{ product.youtube_link }}" target="_blank" type="button"
@@ -73,12 +91,60 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
-       
-
-
+            </div>
 
         </div>
+
+        <section>
+            <h2 class="mb-4 mt-4">Related Addons</h2>
+
+            <div class="row">
+                {% set products = frappe.get_all("Product",filters={'addon_category': product.addon_category}, fields=["*"]) %}
+
+                {% for pr in products %}
+                {% if pr.name != product.name%}
+                <div class="col-sm-4 mb-3 results">
+                    <div class="card">
+                        <div class="card-body mt-2 ml-2 p-1" >
+                            <h4><strong>{{ pr.addon_category }}</strong> </h4>
+                            <img class="card-img-top img-fluid" 
+                                src="{{ pr.image or 'https://crpf.gov.in/writereaddata/Portal/DGIGMaster_Photos/1_126_1_istockphoto-1357365823-612x612.jpg'}}" 
+                                alt="{{ pr.product_name }}" style="height: 250px;">
+                        </div>
+                        
+                        <div class="card-body">
+    
+                            <div class="row">
+
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4><strong>{{ pr.product_name }}</strong> </h4>
+                                            <h5>Price : {{ pr.price }}</h5>
+                                            <h5>Code : {{ pr.name }}</h5>
+                                            <!-- <p class="font-weight-400 mb-0">Description : {{ pr.product_description[:100] }} </p> -->
+                                        </div>
+                                    </div>
+                                    <a href="/products/product_details?p={{pr.name }}" type="button" class="btn btn-primary ">
+                                        <i class="ti-eye"></i> View Product
+                                    </a>
+    
+                                </div>
+                                
+                               
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+    
+
+                {% endfor %}
+               
+            </div>
+            
+        </section>
     </div>
 </div>
 {% endblock %}

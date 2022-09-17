@@ -15,6 +15,21 @@ frappe.ready(function(){
        
     });
 
+    // $("#sendmsg").off("click").on("click", function() {
+    //     console.log('request created')
+    //     frappe.call({
+    //         method: "erevive_portal.templates.pages.products.index.send_whatapp_msg",
+    //         args: {  },
+    //         freeze: true,
+    //         callback: function (r) {
+    //             console.log(r.message)
+                
+    //         }
+    //     });
+        
+       
+    // });
+
     $("#selectiput").change(function(){
         let input = document.getElementById('selectiput').value
         input = input.toLowerCase();
