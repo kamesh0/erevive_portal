@@ -8,3 +8,4 @@ def get_context(context):
     context.products = products
 
     return context
+
