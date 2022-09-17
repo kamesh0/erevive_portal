@@ -13,6 +13,7 @@
   "product_description",
   "price",
   "category",
+  "addon_category",
   "image",
   "section_break_7",
   "youtube_link",
@@ -84,6 +85,13 @@
    "fieldname": "published",
    "fieldtype": "Check",
    "label": "Published"
+  },
+  {
+   "depends_on": "eval:doc.category == \"Tally Addons\"",
+   "fieldname": "addon_category",
+   "fieldtype": "Link",
+   "label": "Addon Category",
+   "options": "Addon Category"
   }
  ],
  "has_web_view": 1,
@@ -91,7 +99,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2022-09-15 12:53:00.918303",
+ "modified": "2022-09-17 14:18:43.353344",
  "modified_by": "Administrator",
  "module": "eRevive Partner Portal",
  "name": "Product",
