@@ -13,12 +13,13 @@
 <div class="container">
     <div class="content-wrapper rounded">
         {% set type = frappe.form_dict.type %}
-        <h2><strong>List of {{type}}</strong> </h2>
+        <!-- <h2><strong>List of {{type}}</strong> </h2> -->
         <!-- <button class="btn btn-primary" id="sendmsg">Send MSG</button> -->
         {% if type == "Tally Addons" %}
+        <h2><strong>List of Revive Tally Add-On</strong> </h2>
             <div class="row">
                 <div class="col-md-9">
-                    <input class="form-control mb-3 custom-select-lg"  id="searchinput" type="search" placeholder="Search {{type}}"
+                    <input class="form-control mb-3 custom-select-lg"  id="searchinput" type="search" placeholder="Type Something..."
                         aria-label="Search">
                 </div>
                 <div class="col-md-3">
@@ -31,20 +32,36 @@
                     </select>
                 </div>
             </div>
+            {% elif type=="Product" %}
+            <h2><strong>List of  Products</strong> </h2>
+
         {% endif %}
-        <div class="row">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Code</th>
+                    <th>Tally Revive Add-On Category</th>
+                    <th>Tally Revive Add-On</th>
+                    <th>End User Pricing *</th>
+                </tr>
+            </thead>
+            <tbody>
+             
+        <!-- <div class="row"> -->
 
             {% for product in products %}
 
             {% if type == product.category %}
+            <tr class="results">
+                <td>{{ product.name }}</td>
+                <td>{{ product.addon_category }}</td>
+                <td>{{ product.product_name }}</td>
+                <td>{{ product.price }}</td>
 
-            <div class="col-sm-12 mb-3 results">
+            </tr>
+            <!-- <div class="col-sm-12 mb-3 results">
                 <div class="card">
-                    <!-- <div class="card-body mt-3 ml-2 p-1">
-                        <h4><strong>{{ product.product_name }}</strong> </h4>
-                    </div> -->
-                    <!-- <img class="card-img-top img-fluid" src="{{ product.image }}" alt="Card image cap"> -->
-                    <div class="card-body">
+                     <div class="card-body">
 
                         <div class="row">
                             <div class="col-md-3">
@@ -65,9 +82,7 @@
                                         <label class="badge badge-warning">{{ product.addon_category}}</label>
                                     </div>
                                     <div class="col-md-10 mt-2 text-right">
-                                        <!-- <a type="button" class="btn btn-outline btn-rounded btn-icon">
-                                            <i class="ti-shopping-cart"></i>
-                                        </a> -->
+                                       
                                         {% if product.product_name == "Tally Addons" %}
                                         {% set link_url = 'products?type=Tally Addons' %}
                                         <a href="{{ link_url }}" type="button" class="btn btn-primary ">
@@ -99,7 +114,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             {% endif %}
 
             {% if loop.index % 3 == 0 %}
@@ -108,10 +123,12 @@
             {% endif %}
 
             {% endfor %}
+   
+        </tbody>
+    </table>
 
 
-
-        </div>
+        <!-- </div> -->
     </div>
 </div>
 {% endblock %}
