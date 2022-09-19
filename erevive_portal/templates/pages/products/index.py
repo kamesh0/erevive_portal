@@ -5,7 +5,7 @@ def get_context(context):
 
     context.no_cache = True
     
-    products = frappe.get_all("Product", fields=["*"], order_by='sorting desc' )
+    products = frappe.get_all("Product", fields=["*"],filters={'published' :True}, order_by='sorting desc' )
     context.products = products
 
     return context
