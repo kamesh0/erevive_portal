@@ -51,8 +51,8 @@
                 {% for lead in leads %}
                 <tr>
                     <td  data-toggle="modal" 
-                    data-target="#lead_details_modal" data-whatever="{{ lead.name }}">
-                      {{ lead.name }}
+                    data-target="#lead_details_modal" data-whatever="{{ lead.name }}" >
+                    <u style="color: navy;"> {{ lead.name }}</u>
                     </td>
                     <td>
                       {{ lead.company_name }}

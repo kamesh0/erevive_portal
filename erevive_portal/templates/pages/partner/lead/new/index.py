@@ -79,7 +79,7 @@ def fetch_category_product(category=None):
     """.format(category=category_data.product_name)
 
     for product in addon_data_list:
-        html = html + f"<option value={product.product_name}>"+ product.product_name+ "</option>"
+        html = html + f"<option value={product.name}>"+ product.product_name+ "</option>"
 
     html = html + " </select></div>"
 
