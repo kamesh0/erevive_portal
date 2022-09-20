@@ -96,6 +96,8 @@ def upload_files(document_pan, document_gst):
             update_pan.document_pan = file_name
             update_pan.save()
 
+
+
     if document_gst:
         fd_json = json.loads(document_gst)
         fd_list = list(fd_json["files_data"])
