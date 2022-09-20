@@ -36,6 +36,7 @@
             <h2><strong>List of  Products</strong> </h2>
 
         {% endif %}
+        <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -47,7 +48,7 @@
             </thead>
             <tbody>
              
-        <!-- <div class="row"> -->
+            <!-- <div class="row"> -->
 
             {% for product in products %}
 
@@ -124,8 +125,9 @@
 
             {% endfor %}
    
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+        </div>
 
 
         <!-- </div> -->
